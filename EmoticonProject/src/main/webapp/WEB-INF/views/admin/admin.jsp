@@ -10,7 +10,7 @@
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">홈</a></li>
-					<li class="breadcrumb-item active">메인화면입니다123</li>
+					<li class="breadcrumb-item active">메인화면입니다123123</li>
 				</ol>
 			</nav>
 		</div>
