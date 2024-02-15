@@ -25,83 +25,33 @@
 <link rel="stylesheet" href="../resources/plugins/slick/slick-theme.css">
 <!-- Main Stylesheet -->
 <link rel="stylesheet" href="../resources/css/style.css">
-<!-- Profile-detail Stylesheet -->
-<link rel="stylesheet" href="../resources/css/profile-details.css">
-<!-- Product-details Stylesheet -->
-<link rel="stylesheet" href="../resources/css/product-details.css">
-<!-- main stylesheet -->
-<link rel="stylesheet" href="../resources/css/style_main.css">
-<!-- jquery -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<script type="text/javascript">
-	$(document).ready(function(){
-		//취소
-		$(".cencel").on("click", function(){
-			location.href="/member/profile-details?m_id=${member.m_id}"
-		})
-		$("#submit").on("click", function(){
-			if($("#m_pw").val()==""){
-				alert("비밀번호를 입력해주세요.");
-				$("#m_pw").focus();
-			}
-			$.ajax({
-				url : "/member/passChk",
-				type : "POST",
-				dataType : "json",
-				data : $("#delForm").serializeArray(),
-				success : function(data){
-					if(data==0){
-						alert("패스워드가 틀렸습니다.");
-						return;
-					}else{
-						if(confirm("회원 탈퇴하시겠습니까?")){
-							$("#delForm").submit();
-						}
-					}
-				}
-			})
-		});
-		
-	})
-</script>
-<body>
-<section class="signin-page account">
-<form action="/member/memberDelete" method="post" id="delForm">
+
+<body id="body">
+<section class="forget-password-page account">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="block text-center">
-					<a class="logo" href="/shop/">
-						<img src="" alt="">
+					<a class="logo" href="index">
 						<h1>Emoticon Shop</h1>
 					</a>
 					<h2 class="text-center">Unregister</h2>
-					&nbsp;&nbsp;
-					<p>정말 탈퇴하시겠습니까? 탈퇴하시려면 비밀번호를 한번 더 입력해주세요.</p>&nbsp;&nbsp;
-					</div>
+					<form class="text-left clearfix">
+						<p>정말 탈퇴하시겠습니까? 탈퇴하시려면 비밀번호를 한번 더 입력해주세요</p>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="ID" id="m_id" name="m_id" value="${member.m_id}" readonly="readonly">
+							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="password">
 						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" placeholder="Password" id="m_pw" name="m_pw">
+						<div class="text-center">
+							<button type="submit" class="btn btn-main text-center">Membership Withdrawal</button>
 						</div>
 					</form>
-					<div class="text-center">
-						<div class="form-group has-feedback">
-						<button class="btn btn-success" type="submit" id="submit">회원탈퇴</button>
-						<button class="cancle btn btn-danger" type="button" id="cancel">취소</button>					
+					<p class="mt-20"><a href="mypage">Back to Mypage</a></p>
 				</div>
 			</div>
-			<div>
-				<c:if test="${msg==false}">
-					비밀번호가 맞지 않습니다.
-				</c:if>
-			</div>
-			<p class="mt-20"><a href="/member/profile-details?m_id=${member.m_id}">Back to Mypage</a></p>
 		</div>
 	</div>
-	
 </section>
 <!-- Essential Scripts -->
 
@@ -122,8 +72,8 @@
 <script src="resources/plugins/slick/slick-animation.min.js"></script>
 <!-- Google Mapl -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-<script type="text/javascript" src="../plugins/google-map/gmap.js"></script>
+<script type="text/javascript" scr="../plugins/google-map/gmap.js"></script>
 <!-- Main Js File -->
-<script src="resources/js/script.js"></script>
+<script src="../js/script.js"></script>
 </body>
 </html>
