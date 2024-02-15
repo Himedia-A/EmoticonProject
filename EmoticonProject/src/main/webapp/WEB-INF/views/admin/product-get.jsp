@@ -65,7 +65,7 @@
 								<div class="text-center py-3">
 									<!-- 수정 버튼 -->
 									<a href="product-modify?p_no=${product.p_no}" class="px-4 btn btn-success">Edit</a>&nbsp;
-									<a href="product-remove?p_no=${product.p)no}" class="px-3 btn btn-secondary">Delete</a>
+									<a href="product-remove?p_no=${product.p_no}" class="px-3 btn btn-secondary">Delete</a>
 								</div>
 							</form>
 							<!-- End General Form Elements -->
