@@ -41,8 +41,8 @@ public class AdminController {
 	private ProductService service;
 	@Inject
 	private MemberService mservice;
-	private static final String IMAGE_REPO="C:\\workspace\\spring\\EmoProject\\src\\main\\webapp\\resources\\image";
-	private static final String IMAGES_REPO="C:\\workspace\\spring\\EmoProject\\src\\main\\webapp\\resources\\images";
+	private static final String IMAGE_REPO="../../../../webapp/resources/image";
+	private static final String IMAGES_REPO="../../../../webapp/resources/images";
 	
 	@GetMapping("")
 	public String adminMain(Model model) throws Exception{
@@ -129,7 +129,7 @@ public class AdminController {
 				Path directory = Paths.get(IMAGES_REPO, p_name);
 				
 				uploadDTO.setI_name(fileRealName);
-				uploadDTO.setI_updatedpath(IMAGES_REPO);     
+				uploadDTO.setI_uploadpath(IMAGES_REPO);     
 				uploadDTOList.add(uploadDTO);
 				
 				if(Files.exists(directory)) {

@@ -12,16 +12,16 @@
 </select>
 
 <insert id="insert" useGeneratedKeys="true" keyProperty="p_no">
-	INSERT INTO product(p_name, p_price, p_image, p_creater, p_regdate, p_readcount, p_etc)
-	VALUES(#{p_name}, #{p_price}, #{p_image}, #{p_creater}, #{p_regdate}, #{p_readcount}, #{p_etc})
+	INSERT INTO product(p_name, p_price, p_image, p_creator, p_regdate, p_readcount, p_etc)
+	VALUES(#{p_name}, #{p_price}, #{p_image}, #{p_creator}, #{p_regdate}, #{p_readcount}, #{p_etc})
 </insert>
 
 <insert id="insertSelectKey">
 	<selectKey keyProperty="p_no" order="AFTER" resultType="long">
 		SELECT LAST_INSERT_ID()
 	</selectKey>
-	INSERT INTO product(p_no, p_name, p_price, p_image, p_creater, p_regdate, p_readcount, p_etc)
-	VALUES(#{p_no}, #{p_name}, #{p_price}, #{p_image}, #{p_creater}, #{p_regdate}, #{p_readcount}, #{p_etc})
+	INSERT INTO product(p_no, p_name, p_price, p_image, p_creator, p_regdate, p_readcount, p_etc)
+	VALUES(#{p_no}, #{p_name}, #{p_price}, #{p_image}, #{p_creator}, #{p_regdate}, #{p_readcount}, #{p_etc})
 </insert>
 
 <select id="read" resultType="kr.co.domain.ProductDTO">
