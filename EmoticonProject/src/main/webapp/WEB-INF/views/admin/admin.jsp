@@ -6,7 +6,7 @@
 <%@include file="../includes/admin-header.jsp" %>
 	<main id="main" class="main">
 		<div class="mt-3 pagetitle">
-			<h4>전체 조회</h4>
+			<h4>모든 조회</h4>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">홈</a></li>
