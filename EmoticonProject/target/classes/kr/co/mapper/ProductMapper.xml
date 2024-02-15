@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.mapper.ProductMapper">
+<select id="getList" resultType="kr.co.domain.ProductDTO">
+	SELECT * FROM product WHERE p_no > 0 order by p_no DESC;
+</select>
+
+<!-- readCount DESList -->
+<select id="readCountDescList" resultType="kr.co.domain.ProductDTO">
+	SELECT * FROM product WHERE p_no > 0 order by p_readcount DESC;
+</select>
+
+<insert id="insert" useGeneratedKeys="true" keyProperty="p_no">
+	INSERT INTO product(p_name, p_price, p_image, p_creater, p_regdate, p_readcount, p_etc)
+	VALUES(#{p_name}, #{p_price}, #{p_image}, #{p_creater}, #{p_regdate}, #{p_readcount}, #{p_etc})
+</insert>
+
+<insert id="insertSelectKey">
+	<selectKey keyProperty="p_no" order="AFTER" resultType="long">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
+	INSERT INTO product(p_no, p_name, p_price, p_image, p_creater, p_regdate, p_readcount, p_etc)
+	VALUES(#{p_no}, #{p_name}, #{p_price}, #{p_image}, #{p_creater}, #{p_regdate}, #{p_readcount}, #{p_etc})
+</insert>
+
+<select id="read" resultType="kr.co.domain.ProductDTO">
+	SELECT * FROM product WHERE p_no=#{p_no}
+</select>
+
+<delete id="delete">
+	DELETE FROM product where p_no=#{p_no}
+</delete>
+
+<update id="update">
+	UPDATE product SET p_name=#{p_name}, p_price=#{p_price}, p_image=#{p_image}, p_creator=#{p_creator},
+	p_regdate=#{p_regdate}, p_readcount=#{p_readcount}, p_etc=#{p_etc} WHERE p_no=#{p_no}
+</update>
+
+<!-- image files -->
+<insert id="imageEnroll">
+	INSERT INTO imagefile(i_no, i_pno, i_name, i_uploadpath) VALUES (#{i_no}, #{i_pno}, #{i_name}, #{i_uploadpath})
+</insert>
+
+<delete id="deleteImageAll">
+	DELETE FROM imagefile WHERE i_pno=#{i_pno}
+</delete>
+
+
+
+
+</mapper>

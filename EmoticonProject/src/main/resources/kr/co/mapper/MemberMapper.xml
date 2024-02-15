@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.mapper.MemberMapper">
+	<!-- 회원가입 -->
+	<insert id="register">
+		INSERT INTO member(m_id
+		, m_pw
+		, m_pw2
+		, m_name
+		, m_email
+		, m_point
+		, m_access) VALUES(#{m_id}
+		, #{m_pw}
+		, #{m_pw2}
+		, #{m_name}
+		, #{m_email}
+		, #{m_point}
+		, #{m_access})
+	</insert>
+	<!-- 로그인 -->
+	<select id="login" resultType="kr.co.domain.MemberDTO">
+		SELECT *
+		FROM member
+		WHERE m_id = #{m_id}
+		AND m_pw = #{m_pw}
+	</select>
+	<!-- 회원정보수정 -->
+	<update id="memberUpdate">
+		UPDATE member SET
+		m_pw = #{m_pw},
+		m_name = #{m_name}
+		WHERE m_id = #{m_id}
+	</update>
+	<!-- 회원 포인트 수정 -->
+	<update id="pointUpdate">
+		UPDATE member SET
+		m_point = #{m_point} WHERE m_no = #{m_no}
+	</update>
+	<!-- 회원 탈퇴 -->
+	<delete id="memberDelete">
+		DELETE FROM member
+		WHERE m_id = #{m_id}
+		AND m_pw = #{m_pw}
+	</delete>
+	<!-- 패스워드 체크 -->
+	<select id="passChk" resultType="int">
+		SELECT COUNT(*) FROM member
+		WHERE m_id = #{m_id}
+		AND m_pw = #{m_pw}
+	</select>
+	<!-- 아이디 중복 체크 -->
+	<select id="idChk" resultType="int">
+		SELECT COUNT(*) FROM member
+		WHERE m_id = #{m_id}
+	</select>
+	<select id="getList" resultType="kr.co.domain.MemberDTO">
+		SELECT * FROM member WHERE m_no > 0
+	</select>
+	<select id="read" resultType="kr.co.domain.MemberDTO">
+		SELECT * FROM member WHERE m_no=#{m_no}
+	</select>
+	<!-- 멤버 id로 조회 -->
+	<select id="readId" resultType="kr.co.domain.MemberDTO">
+		SELECT * FROM member WHERE m_id=#{m_id}
+	</select>
+</mapper>
